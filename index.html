@@ -124,11 +124,14 @@
       }
 
       document.addEventListener("mouseout", (event) => {
-        if (!$("#modal").is(":visible") && controllerModal) {
-          if (!event.toElement && !event.relatedTarget) {
-            $("#modal").css("display", "flex").hide().fadeIn(400);
-            controllerModal = false;
-          }
+        console.log(event);
+        if (
+          !$("#modal").is(":visible") &&
+          controllerModal &&
+          event.clientY <= 0
+        ) {
+          $("#modal").css("display", "flex").hide().fadeIn(400);
+          controllerModal = false;
         }
       });
     </script>
