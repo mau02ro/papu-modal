@@ -50,8 +50,13 @@
         right: 0;
         bottom: 0;
         background: rgba(0, 0, 0, 0.3);
+      }
+      #modal .modal_wrapper {
+        display: flex;
         justify-content: center;
         align-items: center;
+        height: 100%;
+        width: 100%;
       }
       #modal .modal_container {
         background: #ffffff;
@@ -76,19 +81,21 @@
   </head>
   <body>
     <section id="modal">
-      <div class="modal_container">
-        <h2 class="modal_container-title">Hola</h2>
-        <p class="modal_container-text">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum,
-          veritatis. Nulla voluptatum dolorem, tempora facilis reiciendis
-          dolores velit iusto consectetur eligendi minima odio amet mollitia
-          nobis debitis impedit, labore deserunt. Lorem ipsum dolor sit amet
-          consectetur adipisicing elit. Voluptas sint architecto ex quia odit.
-          Repellat veritatis, obcaecati et, beatae repellendus nihil eum aliquam
-          iste tenetur dolores numquam explicabo esse ullam.
-        </p>
+      <div class="modal_wrapper">
+        <div class="modal_container">
+          <h2 class="modal_container-title">Hola</h2>
+          <p class="modal_container-text">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum,
+            veritatis. Nulla voluptatum dolorem, tempora facilis reiciendis
+            dolores velit iusto consectetur eligendi minima odio amet mollitia
+            nobis debitis impedit, labore deserunt. Lorem ipsum dolor sit amet
+            consectetur adipisicing elit. Voluptas sint architecto ex quia odit.
+            Repellat veritatis, obcaecati et, beatae repellendus nihil eum
+            aliquam iste tenetur dolores numquam explicabo esse ullam.
+          </p>
 
-        <button type="button" id="modal_cancelar">Cancelar</button>
+          <button type="button" id="modal_cancelar">Cancelar</button>
+        </div>
       </div>
     </section>
 
@@ -115,8 +122,10 @@
       }
 
       document.addEventListener("mouseout", (event) => {
-        if (!event.toElement && !event.relatedTarget) {
-          $("#modal").css("display", "flex").hide().fadeIn(400);
+        if (!$("#modal").is(":visible")) {
+          if (!event.toElement && !event.relatedTarget) {
+            $("#modal").css("display", "flex").hide().fadeIn(400);
+          }
         }
       });
     </script>
