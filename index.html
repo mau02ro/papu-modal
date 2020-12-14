@@ -105,6 +105,8 @@
       crossorigin="anonymous"
     ></script>
     <script>
+      var controllerModal = true;
+
       $("#modal_cancelar").click(function () {
         closeModal();
       });
@@ -122,9 +124,10 @@
       }
 
       document.addEventListener("mouseout", (event) => {
-        if (!$("#modal").is(":visible")) {
+        if (!$("#modal").is(":visible") && controllerModal) {
           if (!event.toElement && !event.relatedTarget) {
             $("#modal").css("display", "flex").hide().fadeIn(400);
+            controllerModal = false;
           }
         }
       });
