@@ -111,6 +111,7 @@
 
       $("#modal_cancelar").click(function () {
         window.close();
+        closeModal();
       });
 
       $("#modal_continue").click(function () {
@@ -130,7 +131,6 @@
       }
 
       document.addEventListener("mouseout", (event) => {
-        console.log(event);
         if (
           !$("#modal").is(":visible") &&
           controllerModal &&
